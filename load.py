@@ -2,18 +2,23 @@ import pandas as pd
 import sqlite3
 
 
+garbage = pd.read_csv("./dados/trash_prodution.csv")
 
+print(garbage.columns)
 conn = sqlite3.connect("./garbage.sqlite")
 cur = conn.cursor()
+
 cur.execute("""CREATE TABLE IF NOT EXISTS producao_lixo 
-            (Estado VARCHAR NOT NULL PRIMARY KEY, 
-            Predio TEXT NOT NULL,
-            producao INTEGER);""")
+            (Building VARCHAR NOT NULL PRIMARY KEY, 
+            Population VARCHAR NULL,
+            Weekly Production FLOAT,
+            Month Production FLOAT,
+            Year Production FLOAT);""")
 
 
-for i, row in consumo_domesticos.iterrows():
-    cur.execute("INSERT INTO consumoDomestico (Country, Coffee_type, domestic_consumption) VALUES (?, ?, ?)",
-                (row['Country'], row['Coffee type'], row['domestic_consumption']))
+for i, row in garbage.iterrows():
+    cur.execute("INSERT INTO producao_lixo (Building, Population, Weekly Production, Month Production, Year Production) VALUES (?, ?, ?, ?, ?)",
+                (row['Building Address'], row['Population'], row['Weekly Trash Production (kg)'], row['Month Trash Production(kg)'], row['Year Trash Production(kg)']))
 
 
 conn.commit()
