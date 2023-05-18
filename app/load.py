@@ -2,9 +2,9 @@ import pandas as pd
 import sqlite3
 
 
-garbage = pd.read_csv("./dados/trash_prodution.csv")
+garbage = pd.read_csv("../dados/trash_prodution.csv")
 
-conn = sqlite3.connect("./garbage.sqlite")
+conn = sqlite3.connect("../BD/garbage.sqlite")
 cur = conn.cursor()
 
 cur.execute("""CREATE TABLE IF NOT EXISTS producao_lixo 
