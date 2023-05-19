@@ -1,5 +1,4 @@
 import pandas as pd
-import os
 
 
 garbage = pd.read_csv("../dados/trash_prodution.csv")
