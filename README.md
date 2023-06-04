@@ -99,10 +99,10 @@ adição neste arquivo.
 
 ### Comando de criação da imagem:
 ```
-docker build -t app/extract:1.0
+docker build -t extract:1.0
 ```
 ### Comando de criação e execução do container:
 ```
-docker run -p 8080:8080 app/extract:1.0
+docker run -d extract:1.0
 ```
 
