@@ -99,7 +99,7 @@ adição neste arquivo.
 
 ### Comando de criação da imagem:
 ```
-docker build -t extract:1.0
+docker build -t extract:1.0 .
 ```
 ### Comando de criação e execução do container:
 ```
