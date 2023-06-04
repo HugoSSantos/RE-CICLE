@@ -1,12 +1,18 @@
 FROM python:3.10.7
-WORKDIR /app
 
-ADD ./app /app
+COPY . /ETL
+WORKDIR /ETL
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./requirements.txt /etc
+COPY executa.sh /etc/executa.sh
+COPY crontab /etc/executa.sh
 
-RUN pip install -r /etc/requirements.txt
+# Dê permissão de execução ao script cron
+RUN chmod +w /etc/executa.sh
+RUN chmod +w /etc/crontab
 
-EXPOSE 8080
+RUN crontab /etc/executa.sh
 
-CMD ["python", "extract.py"]
+USER root
+
+CMD cron && tail -f /var/log/cron.log

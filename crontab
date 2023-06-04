@@ -1,0 +1,1 @@
+01 00 * * * /etc/verificar_saida.sh >> /app/verificar_saida.log 2>&1
