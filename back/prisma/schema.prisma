@@ -5,12 +5,57 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Central {
-  id_central String @id @default(uuid())
-  razao_social varchar(100) not null
-}
-
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Central {
+  id_central String @id @default(uuid())
+  razao_social String
+  CEP String
+  endereco String
+  numero String
+  CNPJ String @unique
+  catador Catador []
+//carga Carga[]  
+}
+
+model Quadrante {
+  id_quadrante String @id @default(uuid())
+  quadrante String
+  CEP String
+  pontuacao Int @default(0)
+  catador Catador[]
+//carga Carga[]  
+}
+
+model Catador {
+  id_catador String @id @default(uuid())
+  nome String
+  CPF String? @unique
+  CEP Int?
+  endereco String?
+  numero Int?
+  centralId String
+  quadranteId String
+
+  central Central @relation(fields: [centralId], references: [id_central])
+  quadrante Quadrante @relation(fields: [quadranteId], references: [id_quadrante])
+}
+
+
+// model Carga {
+//   id_carga String @id @default(uuid())
+//   litragem Int
+//   tipo String
+//   origem String
+//   central String
+//   createAt DateTime @default(now())
+
+//   central Central @relation(fields: [central], references: [id_central])
+//   quadrante Quadrante @relation(fields: [origem], references: [id_quadrante])
+
+// }
+
+
