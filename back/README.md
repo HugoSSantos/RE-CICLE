@@ -1,30 +1,19 @@
 ## Como rodar o back
 
-Requisitos: 
+### Requisitos: 
 
 * Node packager manager (npm)
 
-#### Instalar o prisma
+### Como funciona
 
-Para isso rode o seguinte comando:
+Deve executar o seguinte comando dentro da pasta raiz do back
 
-`npm install -g prisma`
+```
+docker-compose up --build
+```
 
-#### Atualizando npm
+### Onde estará executando
+Para verficar o funcionamento deverá acessar o seguinte link:
+<a href="http://localhost:5050">http://localhost:5050</a>
 
-Para isso, navegue até a pasta `/back` e rode o seguinte comando:
-
-`npm install`
-
-Dessa forma os pacotes do npm serão devidamente instalados
-
-#### Rodando migrate
-
-Execute o seguinte comando para criar e aplicar as migrações do banco de dados:
-
-`npm migrate dev`
-
-#### Subindo o back-end
-
-Por último, finalize a subida do back com:
-`npm run dev`
+Para navegar entre as informações será necessário passar os parametros pertinentes
