@@ -1,13 +1,12 @@
 import pandas as pd
+import os
 
 
-garbage = pd.read_csv("../dados/trash_prodution.csv")
+garbage = pd.read_csv("../dados/build_trash.csv")
+uf = {'Sao_Paulo': 'SP', 'Recife': 'RE'}
+garbage["City"] = garbage["City"].map(uf)
 
-garbage['Month Trash Production(kg)'] = garbage['Weekly Trash Production (kg)'] * 4
+print(garbage.head(3))
 
-
-garbage['Year Trash Production(kg)'] = garbage['Weekly Trash Production (kg)'] * 52
-
-garbage.drop("Unnamed: 0", axis=1, inplace=True)
-
-garbage.to_csv("./dados/trash_prodution.csv")
+garbage.to_csv("../dados/build_prodution.csv")
+os.remove('../dados/build_trash.csv')

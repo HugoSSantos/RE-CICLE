@@ -1,18 +1,19 @@
 import kaggle
 import shutil
+import os
 
 
 def extract_kaggle():
     kaggle.api.authenticate()
     kaggle.api.dataset_download_files("hssantos/fictional-garbage-production", unzip=True)
-    shutil.move("./*.[csv,txt,xlsx]", "../dados/*.[csv,txt,xlsx]")
 
 
-def extract_local(path, path_date):
-    shutil.move(path, path_date)
+def extract_local(files):
+    for file in files:
+        if file.endswith("csv") or file.endswith("xslx") or file.endswith("txt"):
+            shutil.move("./build_trash.csv", "../dados/build_trash.csv")
 
 
 extract_kaggle()
-path = input()
-path_date = input()
-extract_local(path, path_date)
+file_list = os.listdir("./")
+extract_local(file_list)

@@ -1,20 +1,28 @@
 # <center> ETL(Extract, Transform, Load) </center>
 <p align="justify"> 
-São três etapas necessárias para a análise de dados, onde se realiza a extração,onde transforma e carrega
-os dados. Correspondendo a um processo de combinação de várias fontes de dados seu objetivo principal será
-extrair os dados de bases de informações, organizar e limpar os dados brutos e armazená-los em um repositório
-central (Data Warehouse) para que possam ser realizadas análises com base nesses dados.
+São três etapas necessárias para a análise de dados, onde se 
+realiza a extração,onde transforma e carrega os dados. 
+Correspondendo a um processo de combinação de várias fontes 
+de dados seu objetivo principal será extrair os dados de bases 
+de informações, organizar e limpar os dados brutos e armazená-los
+em um repositório central (Data Warehouse) para que possam ser 
+realizadas análises com base nesses dados.
 </p>
 
 ## Pré-requisitos
 
 ---------
 <div>
-    <p>Antes de inciar veja se você atende aos seguintes requesitos</p>
+    <p>
+        Antes de inciar veja se você atende aos 
+        seguintes requesitos
+    </p>
     <input type='checkbox'> Ter o Docker instalado<br>
-    <input type='checkbox'> Ser um usuário com permissão root ou sudo<br>
+    <input type='checkbox'> 
+    Ser um usuário com permissão root ou sudo<br>
     <input type='checkbox'> Ter uma conta no kaggle<br>
-    <input type='checkbox'> Ter baixado o arquivo de token da API do Kaggle<br>
+    <input type='checkbox'> 
+    Ter baixado o arquivo de token da API do Kaggle<br>
 
 [Guia da API do Kaggle](https://www.kaggle.com/docs/api)
 
@@ -37,42 +45,62 @@ Para usar este ETL, será necessário seguir as seguintes etapas:
 
 ---
 <p align="justify">
-Aquivo que executa a authentificação do usuário kaggle e faz o download dos datasets e os move para 
-a pasta dados
+Aquivo que executa a authentificação do usuário kaggle e faz 
+o download dos datasets e os move para a pasta dados
 </p>
 
 ### Transform.py
 
 ---
 <p align="justify">
-Arquivo que limpa e organiza os dados dos datasets e os unifica em um único arquivo .csv com todos 
-os dados gerados nesta transformação, este arquivo também remove os dataset baixados anteriormente
-e adiciona apenas o atualizado.
+Arquivo que limpa e organiza os dados dos datasets e os 
+unifica em um único arquivo .csv com todos os dados gerados 
+nesta transformação, este arquivo também remove os dataset 
+baixados anteriormentee adiciona apenas o atualizado.
 </p>
 
 ### Load.py
 
 ---
 <p align="justify">
-Arquivo que cria a conexão com o Banco de dados e contém os scripts SQL para realizar a inclusão das
-informações do dataset no banco de dados para que possam ser utilizados.
+Arquivo que cria a conexão com o Banco de dados e contém os 
+scripts SQL para realizar a inclusão das informações do dataset 
+no banco de dados para que possam ser utilizados.
 </p>
 
 ### trash_prodution.csv
 
 ---
 <p align="justify">
-Este arquivo é gerado após a execução do arquivo de transform.py e contém os dados de forma organizada
+Este arquivo é gerado após a execução do arquivo de transform.py 
+e contém os dados de forma organizada.
 </p>
 
 ### garbage.sqlite
 
 ---
 <p align="justify">
-Arquivo do Banco de dados, utilizado para passar as informações para os aplicativos de exibição, como
-metabase e powerBI
+Arquivo do Banco de dados, utilizado para passar as informações 
+para os aplicativos de exibição, como metabase e powerBI.
 </p>
 
+
+### crontab
+
+---
+<p align="justify">
+Arquivo que configura um serviço de timer para realizar a extração
+de dados nos locais indicados pelo arquivo extract.py .
+</p>
+
+### executa.sh
+
+---
+<p align="justify">
+Arquivo utilizado para verificar a execução dos arquivos, assim
+podendo realizar sua execução parte a parte de acordo com o 
+sucesso ou o fracasso da execução anterior.
+</p>
 
 ## Bibliotecas usadas
 
@@ -91,10 +119,11 @@ metabase e powerBI
 ### Requirements
 
 <p align="justify">
-É o arquivo .txt onde irá estar as bibliotecas necessárias para a execução do programa
-não é necessário fazer qualquer alteração no requirements para que o docker funcione,
-caso adicione alguma biblioteca não usada anteriomente no projeto será necessário sua
-adição neste arquivo.
+É o arquivo .txt onde irá estar as bibliotecas necessárias 
+para a execução do programa não é necessário fazer qualquer 
+alteração no requirements para que o docker funcione, caso 
+adicione alguma biblioteca não usada anteriomente no projeto 
+será necessário sua adição neste arquivo.
 </p>
 
 ### Comando de criação da imagem:

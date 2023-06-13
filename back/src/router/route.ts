@@ -3,6 +3,12 @@ import { prisma } from '../prisma';
 
 const route = Router();
 
+route.get("/", (req, res) => {
+
+    return res.status(200).json({"message": "Para executar digite /"})
+})
+
+
 //Busca geral
 route.get("/centrais", async (req, res) => {
 
@@ -140,5 +146,11 @@ route.post("/catadores", async (req, res) => {
 })
 
 //Update
+// route.put("/centrais/:id");
+
+// route.put("/quadrantes/:id");
+
+// route.put("/catadores/:id");
+
 
 export default route;
