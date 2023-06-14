@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100vh;
+        }
+
+        .left-container {
+            width: 100%;
+            max-width: 300px;
+            background-color: #4caf50;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .left-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .left-container h4,
+        .left-container p {
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        .left-container button {
+            margin-bottom: 5px;
+            padding: 10px;
+            background-color: #2e7d32;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .right-container {
+            flex: 1;
+            background-color: #f1f1f1;
+            padding: 20px;
+            box-sizing: border-box;
+            height: 100%;
+            /* Adicionado para preencher toda a altura da tela */
+        }
+
+        .notification-container {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        .notification-container h3,
+        .notification-container p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .collection-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 10px;
+        }
+
+        .collection-item {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        .collection-item h3,
+        .collection-item p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .registration-container {
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .registration-container label,
+        .registration-container input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .registration-container input[type="text"],
+        .registration-container input[type="email"],
+        .registration-container input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .registration-container button {
+            padding: 10px;
+            background-color: #2e7d32;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-container">
+            <img src="img/profile.jpg" alt="Foto do usuário">
+            <h4>Nome do Usuário</h4>
+            <p>Empresa</p>
+            <br>
+            <button onclick="showNotifications()">Notificações</button>
+            <button onclick="showCollections()">Coletas</button>
+            <button>Triagem</button>
+            <button onclick="showRegistration()">Cadastrar
+
+                catador</button>
+        </div>
+        <div class="right-container">
+            <!-- conteudo do container da direita -->
+        </div>
+    </div>
+
+    <script>
+        function showNotifications() {
+            var rightContainer = document.querySelector('.right-container');
+
+            rightContainer.innerHTML = '';
+
+            var header = document.createElement('h2'); // Cabeçalho adicionado
+            header.textContent = 'Notificações';
+            rightContainer.appendChild(header);
+
+            var notificationContainer1 = createNotificationContainer('Lixo despejado!', 'Localização: Torre', 'Horário: 14h');
+            var notificationContainer2 = createNotificationContainer('Lixo do quadrante nº290 foi coletado', 'Localização: Graças', 'Horário: 13h');
+            var notificationContainer3 = createNotificationContainer('Lixo chegou a central!', 'Localização: Boa viagem', 'Horário: 12h');
+            var notificationContainer4 = createNotificationContainer('Lixo chegou a central!', 'Localização: Santo Amaro', 'Horário: 12h30');
+            var notificationContainer5 = createNotificationContainer('Lixo chegou a central!', 'Localização: Espinheiro', 'Horário: 11h45');
+
+            rightContainer.appendChild(notificationContainer1);
+            rightContainer.appendChild(notificationContainer2);
+            rightContainer.appendChild(notificationContainer3);
+            rightContainer.appendChild(notificationContainer4);
+            rightContainer.appendChild(notificationContainer5);
+        }
+
+        function createNotificationContainer(title, location, time) {
+            var notificationContainer = document.createElement('div');
+            notificationContainer.classList.add('notification-container');
+
+            var titleElement = document.createElement('h3');
+            titleElement.textContent = title;
+
+            var locationElement = document.createElement('p');
+            locationElement.textContent = 'Localização: ' + location;
+
+            var timeElement = document.createElement('p');
+            timeElement.textContent = 'Horário: ' + time;
+
+            notificationContainer.appendChild(titleElement);
+            notificationContainer.appendChild(locationElement);
+            notificationContainer.appendChild(timeElement);
+
+            return notificationContainer;
+        }
+
+        function showCollections() {
+            var rightContainer = document.querySelector('.right-container');
+
+            rightContainer.innerHTML = '';
+
+            var header = document.createElement('h2'); // Cabeçalho adicionado
+            header.textContent = 'Coletas';
+            rightContainer.appendChild(header);
+
+            var collectionContainer = document.createElement('div');
+            collectionContainer.classList.add('collection-container');
+
+            var collectionItem1 = createCollectionItem('Lixo despejado!', 'Alta prioridade', 'Encruzilhada', 'Capacidade: 10kg');
+            var collectionItem2 = createCollectionItem('Lixo despejado!', 'Alta prioridade', 'Afogados', 'Capacidade: 15kg');
+            var collectionItem3 = createCollectionItem('Lixo despejado!', 'Média prioridade', 'Boa viagem', 'Capacidade: 8kg');
+            var collectionItem4 = createCollectionItem('Lixo despejado!', 'Baixa prioridade', 'Aflitos', 'Capacidade: 12kg');
+            var collectionItem5 = createCollectionItem('Lixo despejado!', 'Alta prioridade', 'Ilha do Retiro', 'Capacidade: 20kg');
+            var collectionItem6 = createCollectionItem('Lixo despejado!', 'Baixa prioridade', 'Arruda', 'Capacidade: 5kg');
+
+            collectionContainer.appendChild(collectionItem1);
+            collectionContainer.appendChild(collectionItem2);
+            collectionContainer.appendChild(collectionItem3);
+            collectionContainer.appendChild(collectionItem4);
+
+
+            collectionContainer.appendChild(collectionItem5);
+            collectionContainer.appendChild(collectionItem6);
+
+            rightContainer.appendChild(collectionContainer);
+        }
+
+        function createCollectionItem(title, priorityMessage, location, capacity) {
+            var collectionItem = document.createElement('div');
+            collectionItem.classList.add('collection-item');
+
+            var titleElement = document.createElement('h3');
+            titleElement.textContent = title;
+
+            var priorityMessageElement = document.createElement('p');
+            priorityMessageElement.textContent = priorityMessage;
+
+            var locationElement = document.createElement('p');
+            locationElement.textContent = 'Localização: ' + location;
+
+            var capacityElement = document.createElement('p');
+            capacityElement.textContent = capacity;
+
+            collectionItem.appendChild(titleElement);
+            collectionItem.appendChild(priorityMessageElement);
+            collectionItem.appendChild(locationElement);
+            collectionItem.appendChild(capacityElement);
+
+            return collectionItem;
+        }
+
+        function showRegistration() {
+            var rightContainer = document.querySelector('.right-container');
+
+            rightContainer.innerHTML = '';
+
+            var header = document.createElement('h2'); // Cabeçalho adicionado
+            header.textContent = 'Cadastrar catador';
+            rightContainer.appendChild(header);
+
+            var registrationContainer = document.createElement('div');
+            registrationContainer.classList.add('registration-container');
+
+            var nameLabel = document.createElement('label');
+            nameLabel.textContent = 'Nome:';
+            var nameInput = document.createElement('input');
+            nameInput.type = 'text';
+
+            var addressLabel = document.createElement('label');
+            addressLabel.textContent = 'Endereço:';
+            var addressInput = document.createElement('input');
+            addressInput.type = 'text';
+
+            var emailLabel = document.createElement('label');
+            emailLabel.textContent = 'Email:';
+            var emailInput = document.createElement('input');
+            emailInput.type = 'email';
+
+            var cpfLabel = document.createElement('label');
+            cpfLabel.textContent = 'CPF:';
+            var cpfInput = document.createElement('input');
+            cpfInput.type = 'text';
+
+            var cepLabel = document.createElement('label');
+            cepLabel.textContent = 'CEP:';
+            var cepInput = document.createElement('input');
+            cepInput.type = 'text';
+
+            var numberLabel = document.createElement('label');
+            numberLabel.textContent = 'Número:';
+            var numberInput = document.createElement('input');
+            numberInput.type = 'text';
+
+            var photoLabel = document.createElement('label');
+            photoLabel.textContent = 'Foto:';
+            var photoInput = document.createElement('input');
+            photoInput.type = 'file';
+
+            var submitButton = document.createElement('button');
+            submitButton.textContent = 'Enviar';
+
+            registrationContainer.appendChild(nameLabel);
+            registrationContainer.appendChild(nameInput);
+            registrationContainer.appendChild(addressLabel);
+            registrationContainer.appendChild(addressInput);
+            registrationContainer.appendChild(emailLabel);
+            registrationContainer.appendChild(emailInput);
+            registrationContainer.appendChild(cpfLabel);
+            registrationContainer.appendChild(cpfInput);
+            registrationContainer.appendChild(cepLabel);
+            registrationContainer.appendChild(cepInput);
+            registrationContainer.appendChild(numberLabel);
+            registrationContainer.appendChild(numberInput);
+            registrationContainer.appendChild(photoLabel);
+            registrationContainer.appendChild(photoInput);
+            registrationContainer.appendChild(submitButton);
+
+            rightContainer.appendChild(registrationContainer);
+        }
+    </script>
+</body>
+
+</html>

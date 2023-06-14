@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Bem vindo(a)</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .left-container {
+            width: 25%;
+            background-color: #4caf50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            height: 100vh;
+        }
+
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            color: #4caf50;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .right-container {
+            flex: 1;
+            background-image: url('img/background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left-container">
+        <div class="header">Re-cicle</div>
+        <div class="welcome-message">Bem-vindo(a) de volta!</div>
+        <a href="projetoLoginCentral.html" class="button">Entrar</a>
+        <a href="projetoCriarConta.html" class="button">Criar sua conta</a>
+        <a href="projetoCadastroParceria.html" class="button">Seja parceiro</a>
+    </div>
+    <div class="right-container">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Re-cicle</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .left-container {
+            width: 25%;
+            background-color: #254D0DCC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            height: 100vh;
+        }
+
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .input-field {
+            width: 95%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            color: #4caf50;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .right-container {
+            flex: 1;
+            background-image: url('img/background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        @media (max-width: 768px) {
+
+            /* Tamanho máximo da tela em 768px */
+            .left-container {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            /* Tamanho máximo da tela em 480px */
+            .left-container {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .input-field {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left-container">
+        <div class="header">Re-cicle</div>
+        <div class="welcome-message">Bem-vindo(a) de volta!</div>
+        <form action="projetoTelaConta.html">
+            <input type="email" class="input-field" placeholder="E-mail" required>
+            <input type="password" class="input-field" placeholder="Senha" required>
+            <button type="submit" class="button">Entrar</button>
+        </form>
+    </div>
+    <div class="right-container">
+    </div>
+</body>
+
+</html>
